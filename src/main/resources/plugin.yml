@@ -1,7 +1,7 @@
 name: Connect Discord
 version: '${project.version}'
 main: net.hide0.connect.discord.connectdiscord.ConnectDiscord
-api-version: 1.18
+api-version: 1.16.5
 authors: [ Hidemal ]
 description: DiscordとMinecraft Bukkitサーバーの連携を強化します
 website: hide0.net
