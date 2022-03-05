@@ -22,26 +22,29 @@ public class Discord {
         }
         DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
         api.addMessageCreateListener(event -> {
-                    onCheckWebhookExist(event);
-                    onChatPost(event);
+                    if (Objects.equals(event.getChannel().getIdAsString(), channelId)) {
+                        onCheckWebhookExist(event);
+                        onChatPost(event);
+                    }
                 }
         );
     }
 
     public static void onChatPost(MessageCreateEvent event) {
-
+        if (!event.getMessageAuthor().isBotUser()) {
+            Main.onPostChat(event.getMessageContent());
+        }
     }
 
     public static void onCheckWebhookExist(MessageCreateEvent event) {
-        if (Objects.equals(event.getChannel().getIdAsString(), channelId)) {
-            //Nullはありえない
-            ServerTextChannel channel = event.getServerTextChannel().get();
-            URL webhook = new WebhookBuilder(channel)
-                    .setName("Minecraft Server Connect Discord Webhook")
-                    .create().join()
-                    .getUrl();
-            webhookUrl = String.valueOf(webhook);
-            Config.setWebhookUrl(webhookUrl);
-        }
+        //Nullはありえない
+        ServerTextChannel channel = event.getServerTextChannel().get();
+        URL webhook = new WebhookBuilder(channel)
+                .setName("Minecraft Server Connect Discord Webhook")
+                .create().join()
+                .getUrl();
+        webhookUrl = String.valueOf(webhook);
+        Config.setWebhookUrl(webhookUrl);
+
     }
 }
