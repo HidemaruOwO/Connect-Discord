@@ -72,5 +72,11 @@
             <version>1.18.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.javacord</groupId>
+            <artifactId>javacord-api</artifactId>
+            <version>3.4.0</version>
+            <type>pom</type>
+        </dependency>
     </dependencies>
 </project>
