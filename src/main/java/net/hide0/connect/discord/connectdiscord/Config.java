@@ -4,11 +4,11 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
 
 public class Config {
-    private final Plugin plugin;
+    private static Plugin plugin = null;
     private static FileConfiguration config = null;
 
     public Config(Plugin plugin) {
-        this.plugin = plugin;
+        Config.plugin = plugin;
         // ロードする
         load();
     }
@@ -41,5 +41,9 @@ public class Config {
 
     public static String getWebhookUrl() {
         return config.getString("webhookUrl");
+    }
+    public static void setWebhookUrl(String URL) {
+        config.set("webhookUrl",URL);
+        plugin.saveDefaultConfig();
     }
 }
