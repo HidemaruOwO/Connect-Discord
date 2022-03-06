@@ -7,12 +7,12 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getLogger().info("Connect Discordが起動しました");
+        getLogger().info("▃▅▅▆▆▇▇ Connect Discord ▇▇▆▆▅▅▃\nConnect Discordが起動しました!\n\n◊◊◊◊≡  Create by Hide0  ≡◊◊◊◊");
     }
 
     @Override
     public void onDisable() {
-        getLogger().info("Connect Discordを終了させました");
+        getLogger().info("Connect Discordを終了させました...");
     }
 
     public static void onPostLog(String Message) {
